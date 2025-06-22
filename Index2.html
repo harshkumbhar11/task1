@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stopwatch Web App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 3rem;
+    }
+
+    .stopwatch {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      width: 300px;
+    }
+
+    .time-display {
+      font-size: 48px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .controls button {
+      flex: 1 1 45%;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .start { background-color: #4CAF50; color: white; }
+    .pause { background-color: #FF9800; color: white; }
+    .reset { background-color: #F44336; color: white; }
+    .lap { background-color: #2196F3; color: white; }
+
+    .controls button:hover {
+      opacity: 0.85;
+    }
+
+    .laps {
+      margin-top: 20px;
+      max-height: 200px;
+      overflow-y: auto;
+      text-align: left;
+    }
+
+    .laps li {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px 12px;
+      margin: 5px 0;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Stopwatch</h1>
+  <div class="stopwatch">
+    <div class="time-display" id="display">00:00:00</div>
+
+    <div class="controls">
+      <button class="start" onclick="startTimer()">Start</button>
+      <button class="pause" onclick="pauseTimer()">Pause</button>
+      <button class="reset" onclick="resetTimer()">Reset</button>
+      <button class="lap" onclick="recordLap()">Lap</button>
+    </div>
+
+    <ul class="laps" id="laps"></ul>
+  </div>
+
+  <script>
+    let startTime = 0;
+    let elapsedTime = 0;
+    let timerInterval;
+    const display = document.getElementById("display");
+    const lapsContainer = document.getElementById("laps");
+
+    function timeToString(time) {
+      let hrs = Math.floor(time / 3600000);
+      let mins = Math.floor((time % 3600000) / 60000);
+      let secs = Math.floor((time % 60000) / 1000);
+
+      hrs = hrs.toString().padStart(2, '0');
+      mins = mins.toString().padStart(2, '0');
+      secs = secs.toString().padStart(2, '0');
+
+      return `${hrs}:${mins}:${secs}`;
+    }
+
+    function startTimer() {
+      if (timerInterval) return; // Prevent multiple intervals
+      startTime = Date.now() - elapsedTime;
+      timerInterval = setInterval(() => {
+        elapsedTime = Date.now() - startTime;
+        display.textContent = timeToString(elapsedTime);
+      }, 1000);
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      startTime = 0;
+      elapsedTime = 0;
+      display.textContent = "00:00:00";
+      lapsContainer.innerHTML = '';
+    }
+
+    function recordLap() {
+      if (!elapsedTime) return;
+      const li = document.createElement("li");
+      li.textContent = `Lap ${lapsContainer.children.length + 1} — ${timeToString(elapsedTime)}`;
+      lapsContainer.appendChild(li);
+    }
+  </script>
+
+</body>
+</html>

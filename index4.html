@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Developer Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0,0,0,0.7);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #4FC3F7;
+    }
+
+    .section {
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    #home {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .intro-text {
+      max-width: 500px;
+    }
+
+    .intro-text h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .intro-text p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .profile-pic {
+      max-width: 300px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    #about h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #4FC3F7;
+      display: inline-block;
+    }
+
+    #about p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: rgba(0,0,0,0.6);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Dev Portfolio</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <section class="section" id="home">
+    <div class="intro-text">
+      <h1>Hello, I'm Harsh</h1>
+      <p>A passionate Web Developer skilled in building responsive and interactive websites using modern technologies like HTML, CSS, JavaScript, React, and Node.js.</p>
+    </div>
+    <img src="https://i.imgur.com/uZBCrMV.jpg" alt="Professional Photo" class="profile-pic" />
+  </section>
+
+  <!-- About Me Section -->
+  <section class="section" id="about">
+    <h2>About Me</h2>
+    <p>I’m a dedicated web developer with a strong foundation in frontend and backend technologies. My journey began during college, where I discovered a love for building clean, user-friendly interfaces and solving real-world problems with code.</p>
+    
+    <p><strong>🎓 Education:</strong>  
+    B.Tech in Computer Science – XYZ University (2019–2023)</p>
+
+    <p><strong>💼 Experience:</strong><br>
+    - Interned at ABC Tech (React Developer)<br>
+    - Freelanced for startups building landing pages & e-commerce features<br>
+    - Built portfolio projects including a movie app, e-commerce site, and a real-time chat app</p>
+
+    <p>I enjoy working on challenging problems and continuously learning new tools and frameworks.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Harsh | Web Developer Portfolio
+  </footer>
+
+</body>
+</html>
